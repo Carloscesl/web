@@ -9,9 +9,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadHome() {
   document.getElementById("mainContent").innerHTML = `
-        <h1>Inicio</h1>
-        <p>Bienvenido al repositorio académico.</p>
-    `;
+    <div class="home-banner">
+        <h1>Repositorio Académico</h1>
+        <p>Plataforma digital de apoyo académico</p>
+        <h2>Universidad de Cundinamarca</h2>
+    </div>
+
+    <div class="home-info">
+
+        <div class="info-card">
+            <h3>📚 Nuestra Universidad</h3>
+            <p>
+                La Universidad de Cundinamarca es una institución pública de 
+                educación superior comprometida con la formación integral, 
+                la investigación y el desarrollo regional.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>🎯 Misión</h3>
+            <p>
+                Formar ciudadanos con pensamiento crítico, responsabilidad social 
+                y compromiso con el desarrollo sostenible del país.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>🌎 Visión</h3>
+            <p>
+                Ser una universidad reconocida por su excelencia académica, 
+                innovación e impacto social en Colombia.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>💻 Sobre el Repositorio</h3>
+            <p>
+                Este sistema permite gestionar CADIS, REAS y actividades académicas,
+                facilitando la organización de contenidos y recursos digitales.
+            </p>
+        </div>
+
+    </div>
+  `;
 }
 
 /* ===============================
@@ -24,8 +64,9 @@ async function loadCadis() {
   const menu = document.getElementById("menu");
 
   // 🔥 Solo borrar elementos dinámicos
-  document.querySelectorAll(".cadi-item, .area-item")
-    .forEach(e => e.remove());
+  document
+    .querySelectorAll(".cadi-item, .area-item")
+    .forEach((e) => e.remove());
 
   cadis.forEach((cadi) => {
     const li = document.createElement("li");
@@ -40,8 +81,7 @@ async function loadCadis() {
    CARGAR REAS POR CADI
 ================================ */
 async function loadReas(cadiId, element) {
-
-  document.querySelectorAll(".area-item").forEach(e => e.remove());
+  document.querySelectorAll(".area-item").forEach((e) => e.remove());
 
   const res = await fetch(`${API}/reas`);
   const reas = await res.json();
